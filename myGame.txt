@@ -4,13 +4,7 @@ import sys
 import math
 import random
 import ctypes
-from ctypes import windll, Structure, c_long
-
-class RECT(Structure):
-    _fields_ = [("left", c_long),
-                ("top", c_long),
-                ("right", c_long),
-                ("bottom", c_long)]
+import pygetwindow as gw
 
 screen_width, screen_height = 800, 600
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.NOFRAME)
@@ -1158,19 +1152,19 @@ def main():
                         sys.exit()
                     if title_bar_rect.collidepoint(event.pos):
                         dragging = True
-                        rect = RECT()
-                        windll.user32.GetWindowRect(windll.user32.GetForegroundWindow(), ctypes.byref(rect))
+                        rect = gw.getActiveWindow()
                         drag_offset_x = event.pos[0]
                         drag_offset_y = event.pos[1]
-                    elif event.type == pygame.MOUSEBUTTONUP:
-                        if event.button == 1:
-                            dragging = False
-                    elif event.type == pygame.MOUSEMOTION:
-                        if dragging:
-                            mouse_x, mouse_y = event.pos
-                            new_x = mouse_x - drag_offset_x
-                            new_y = mouse_y - drag_offset_y
-                            windll.user32.SetWindowPos(windll.user32.GetForegroundWindow(), None, new_x, new_y, 0, 0, 0x0040)
+            elif event.type == pygame.MOUSEBUTTONUP:
+                if event.button == 1:
+                    dragging = False
+            elif event.type == pygame.MOUSEMOTION:
+                if dragging:
+                    mouse_x, mouse_y = pygame.mouse.get_pos()
+                    new_x = rect.left + (mouse_x - drag_offset_x)
+                    new_y = rect.top + (mouse_y - drag_offset_y)
+                    print(f"Moving window to: ({new_x}, {new_y})")
+                    rect.moveTo(new_x, new_y)
 
 
         title_text_width, minimize_button, close_button, title_bar_height = draw_title_bar(screen)
