@@ -3,7 +3,6 @@ pygame.init()
 import sys
 import math
 import random
-import ctypes
 import pygetwindow as gw
 
 screen_width, screen_height = 800, 600
@@ -591,12 +590,12 @@ bannana_test = Item('Rubber Bannana', bannana, 'This is a bannana.', 'bannana', 
 health_potion = Item('Health Potion', potion, 'This should help you stay alive a bit longer', 'potion', is_consumable=True, effect='increase_health', alignment='bottom', amount=10)
 
 map_test_data = [
-    [('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1)],
-    [('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1)],
-    [('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1), ('Plantset 1', 18, 'right', 1)],
-    [('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ('Plantset 1', 19, 'center', 1), ('Plantset 1', 18, 'center', 1), ('Plantset 1', 20, 'center', 1), ('Plantset 1', 19, 'center', 1)],
-    [('Plantset 1', 18, 'right', 1), ('Plantset 1', 20, 'right', 1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ('Plantset 1', 20, 'right', 1), ('Plantset 1', 19, 'right', 1)],
-    [('Plantset 1', 20, 'center', 1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ('Plantset 1', 20, 'center', 1)],
+    [('Plantset 1', 18, 'top', 1), ('Plantset 1', 18, 'top', 1), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -833,7 +832,6 @@ def main():
     show_background = True
     blocks = []
     pass_under_blocks = []
-    clock = pygame.time.Clock()
     speed = 2
 
     while menu:
@@ -965,9 +963,9 @@ def main():
         item_rects = []
 
 ##### Add items to the map
-        if not items_placed:
-            place_items(current_map, apples + [poisoned_apple, bannana_test, health_potion])
-            items_placed = True
+#        if not items_placed:
+#            place_items(current_map, apples + [poisoned_apple, bannana_test, health_potion])
+#            items_placed = True
         #print(f"current_map: {current_map.data}\nEND")
 ##########################
 
@@ -1060,11 +1058,11 @@ def main():
         new_rect = pygame.Rect(new_x, new_y, player_tile.width, player_tile.height)
 
 ##### Comment out for Production
-#        current_map.draw_grid()
-#        for block_rect, _ in blocks:
-#            pygame.draw.rect(screen, (255, 0, 0), block_rect)  # Draw no_passover blocks in red || DELETE color when it is time to begin creating actual tilesets
-#        for block_rect, _ in pass_under_blocks:
-#            pygame.draw.rect(screen, (0, 255, 0), block_rect)  # Draw passover blocks in green || DELETE color when it is time to begin creating actual tilesets
+        current_map.draw_grid()
+        for block_rect, _ in blocks:
+            pygame.draw.rect(screen, (255, 0, 0), block_rect)  # Draw no_passover blocks in red || DELETE color when it is time to begin creating actual tilesets
+        for block_rect, _ in pass_under_blocks:
+            pygame.draw.rect(screen, (0, 255, 0), block_rect)  # Draw passover blocks in green || DELETE color when it is time to begin creating actual tilesets
 ################################
 
         blocks[:], pass_under_blocks[:] = current_map.draw_map(screen)
@@ -1163,7 +1161,7 @@ def main():
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     new_x = rect.left + (mouse_x - drag_offset_x)
                     new_y = rect.top + (mouse_y - drag_offset_y)
-                    print(f"Moving window to: ({new_x}, {new_y})")
+#                    print(f"Moving window to: ({new_x}, {new_y})")
                     rect.moveTo(new_x, new_y)
 
 
